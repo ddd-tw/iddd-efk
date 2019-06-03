@@ -5,7 +5,7 @@
 build
 
 .idea
-gradle
-gradle/
+gradle/wrapper
 gradlew
 gradlew.bat
+*.iml
