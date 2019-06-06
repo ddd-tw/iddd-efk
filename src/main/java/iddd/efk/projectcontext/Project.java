@@ -1,11 +1,11 @@
 package iddd.efk.projectcontext;
 
-import iddd.efk.customercontext.Customer;
+import iddd.efk.customercontext.domain.Customer;
 import iddd.efk.freelancercontext.Freelancer;
 
 public class Project {
 
-    private Customer customer;
+    private final Customer customer;
     private Freelancer freelancer;
 
     public Project(Customer customer) {

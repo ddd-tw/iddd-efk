@@ -15,18 +15,22 @@ plugins {
 }
 
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    mavenCentral()
+}
+
+repositories {
+
 }
 
 dependencies {
-    // This dependency is found on compile classpath of this component and consumers.
-    implementation 'com.google.guava:guava:27.0.1-jre'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    testCompile 'io.cucumber:cucumber-java8:4.3.1'
+    testCompile 'io.cucumber:cucumber-junit:4.3.1'
 }
 
 // Define the main class for the application
 mainClassName = 'iddd.efk.App'
+
+apply from: file("${rootDir}/gradle/check.gradle")
