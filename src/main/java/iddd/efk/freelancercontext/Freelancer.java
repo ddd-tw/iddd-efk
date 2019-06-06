@@ -1,7 +1,6 @@
 package iddd.efk.freelancercontext;
 
 import iddd.efk.projectcontext.Project;
-import oracle.jvm.hotspot.jfr.Producer;
 
 import java.util.ArrayList;
 import java.util.UUID;
