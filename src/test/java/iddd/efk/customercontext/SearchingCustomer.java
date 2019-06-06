@@ -5,8 +5,8 @@ import iddd.efk.customercontext.application.CustomerAppService;
 import iddd.efk.customercontext.application.CustomerRepository;
 import iddd.efk.customercontext.domain.Customer;
 import iddd.efk.customercontext.infra.MemoryCustomerRepository;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+
+import static org.junit.Assert.*;
 
 public class SearchingCustomer implements En {
 
@@ -15,22 +15,23 @@ public class SearchingCustomer implements En {
 
     public SearchingCustomer() {
 
-        Given("^there is a customer named \"([^\"]*)\"$", (String arg0) -> {
-            Customer customer = new Customer("Bob");
+        Given("^there is a customer named \"([^\"]*)\"$", (String existingCustomerName) -> {
+            Customer customer = new Customer(existingCustomerName);
             customerRepository.save(customer);
         });
 
-        When("^I search a customer name \"([^\"]*)\"$", (String name) -> {
+        When("^I search a customer name \"([^\"]*)\"$", (String targetCustomerName) -> {
             CustomerAppService customerAppService = new CustomerAppService(customerRepository);
-            customer = customerAppService.searchCustomer(name);
+            customer = customerAppService.searchCustomer(targetCustomerName);
         });
 
-        Then("^I get a customer with name \"([^\"]*)\"$", (String expectedName) -> {
-            assertEquals(expectedName, customer.name());
+        Then("^I get a customer with name \"([^\"]*)\"$", (String expectedCustomerName) -> {
+            assertEquals(expectedCustomerName, customer.name());
         });
 
-        Then("^I won't get any customer$", () -> {
-            assertNull(customer);
+        Then("customer is not presented", () -> {
+            // Write code here that turns the phrase above into concrete actions
+           assertNull(customer);
         });
     }
 }

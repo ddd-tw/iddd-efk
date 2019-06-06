@@ -8,4 +8,4 @@ Feature: Searching customer
 
   Scenario: Searing for a customer is not exist in system
     When I search a customer name "Eric"
-    Then I won't get any customer
+    Then customer is not presented
