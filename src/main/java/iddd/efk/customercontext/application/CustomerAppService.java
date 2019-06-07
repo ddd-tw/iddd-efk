@@ -2,17 +2,17 @@ package iddd.efk.customercontext.application;
 
 import iddd.efk.customercontext.domain.Customer;
 
-import java.util.HashSet;
+import java.util.Set;
 
 public class CustomerAppService {
 
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
     public CustomerAppService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
-    public HashSet<Customer> searchCustomer(String name) {
+    public Set<Customer> searchCustomer(String name) {
         return this.customerRepository.withCustomerName(name);
     }
 }

@@ -7,7 +7,6 @@ import iddd.efk.freelancercontext.Freelancer;
 import iddd.efk.freelancercontext.Location;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 import static org.junit.Assert.*;
@@ -38,8 +37,7 @@ public class ProjectTest {
                         CommuicationChannelType.EMAIL,
                         "xxx@mail.com"
                 ),
-                new Location("Taiwan", "Taipei", "xxx", "123"),
-                new ArrayList<Project>()
+                new Location("Taiwan", "Taipei", "xxx", "123")
 
 //                    CommunicationChannel communicationChannel, Location location, ArrayList<Project> projects) {
         );

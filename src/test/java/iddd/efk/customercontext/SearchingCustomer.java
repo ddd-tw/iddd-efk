@@ -6,14 +6,15 @@ import iddd.efk.customercontext.application.CustomerRepository;
 import iddd.efk.customercontext.domain.Customer;
 import iddd.efk.customercontext.infra.MemoryCustomerRepository;
 
-import java.util.HashSet;
+import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SearchingCustomer implements En {
 
-    private HashSet<Customer> customers;
-    private CustomerRepository customerRepository = new MemoryCustomerRepository();
+    private Set<Customer> customers;
+    private final CustomerRepository customerRepository = new MemoryCustomerRepository();
 
     public SearchingCustomer() {
 
@@ -33,7 +34,7 @@ public class SearchingCustomer implements En {
 
         Then("customer is not presented", () -> {
             // Write code here that turns the phrase above into concrete actions
-           assertTrue(customers.isEmpty());
+            assertTrue(customers.isEmpty());
         });
     }
 }
