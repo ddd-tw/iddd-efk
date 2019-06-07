@@ -7,5 +7,6 @@ Feature: Searching customer
     Then I get a customer with name "Bob"
 
   Scenario: Searing for a customer is not exist in system
+    Given there is a customer named "Bob"
     When I search a customer name "Eric"
     Then customer is not presented

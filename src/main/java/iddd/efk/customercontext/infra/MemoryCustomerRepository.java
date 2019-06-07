@@ -3,19 +3,30 @@ package iddd.efk.customercontext.infra;
 import iddd.efk.customercontext.application.CustomerRepository;
 import iddd.efk.customercontext.domain.Customer;
 
+import java.util.HashSet;
+
 public class MemoryCustomerRepository implements CustomerRepository {
 
-    private Customer customer;
+    private HashSet<Customer> customers = new HashSet<>();
 
     @Override
-    public Customer withCustomerName(String name) {
+    public HashSet<Customer> withCustomerName(String name) {
 
-        return this.customer;
+        HashSet<Customer> customersWithName = new HashSet<>();
 
+        for(Customer customer: this.customers) {
+
+            if (name.equals(customer.name())) {
+                customersWithName.add(customer);
+            }
+
+        }
+
+        return customersWithName;
     }
 
     @Override
     public void save(Customer customer) {
-        this.customer = customer;
+        this.customers.add(customer);
     }
 }

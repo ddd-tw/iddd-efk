@@ -6,11 +6,13 @@ import iddd.efk.customercontext.application.CustomerRepository;
 import iddd.efk.customercontext.domain.Customer;
 import iddd.efk.customercontext.infra.MemoryCustomerRepository;
 
+import java.util.HashSet;
+
 import static org.junit.Assert.*;
 
 public class SearchingCustomer implements En {
 
-    private Customer customer;
+    private HashSet<Customer> customers;
     private CustomerRepository customerRepository = new MemoryCustomerRepository();
 
     public SearchingCustomer() {
@@ -22,16 +24,16 @@ public class SearchingCustomer implements En {
 
         When("^I search a customer name \"([^\"]*)\"$", (String targetCustomerName) -> {
             CustomerAppService customerAppService = new CustomerAppService(customerRepository);
-            customer = customerAppService.searchCustomer(targetCustomerName);
+            customers = customerAppService.searchCustomer(targetCustomerName);
         });
 
         Then("^I get a customer with name \"([^\"]*)\"$", (String expectedCustomerName) -> {
-            assertEquals(expectedCustomerName, customer.name());
+            assertEquals(expectedCustomerName, customers.iterator().next().name());
         });
 
         Then("customer is not presented", () -> {
             // Write code here that turns the phrase above into concrete actions
-           assertNull(customer);
+           assertTrue(customers.isEmpty());
         });
     }
 }
