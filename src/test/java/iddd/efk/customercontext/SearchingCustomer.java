@@ -31,9 +31,8 @@ public class SearchingCustomer implements En {
             assertEquals(expectedCustomerName, customers.iterator().next().name());
         });
 
-        Then("customer is not presented", () -> {
-            // Write code here that turns the phrase above into concrete actions
-           assertTrue(customers.isEmpty());
+        Then("customer is not presented˜", () -> {
+            assertTrue(customers.isEmpty());
         });
     }
 }
